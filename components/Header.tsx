@@ -1,9 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import type { SyntheticEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { siteNav } from "@/lib/data";
 import { assetPath } from "@/lib/paths";
+
+const profileImage = assetPath("/profile.png");
+const profileFallbackImage = assetPath("/profile-placeholder.svg");
+
+function useFallbackProfileImage(event: SyntheticEvent<HTMLImageElement>) {
+  if (!event.currentTarget.src.endsWith(profileFallbackImage)) {
+    event.currentTarget.src = profileFallbackImage;
+  }
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -50,13 +60,23 @@ export function Header() {
         aria-hidden="true"
         onChange={(event) => setOpen(event.currentTarget.checked)}
       />
-      <header className="sticky top-0 z-50 border-b border-[#E5E1D8] bg-[#F8F7F2]/94 backdrop-blur lg:fixed lg:inset-y-0 lg:left-0 lg:w-[280px] lg:border-b-0 lg:border-r">
-        <div className="container flex h-16 items-center justify-between lg:h-full lg:w-full lg:flex-col lg:items-stretch lg:px-7 lg:py-8">
+      <header className="sticky top-0 z-50 border-b border-[#E5E1D8] bg-[#F8F7F2]/94 backdrop-blur lg:fixed lg:inset-y-0 lg:left-0 lg:w-[232px] lg:border-b-0 lg:border-r">
+        <div className="container flex h-16 items-center justify-between lg:h-full lg:w-full lg:flex-col lg:items-stretch lg:px-6 lg:py-8">
           <div>
-            <Link href="/" className="text-[15px] font-bold tracking-[0] text-[#111827] lg:text-2xl">
-              김원태
-            </Link>
-            <p className="mt-2 hidden text-sm leading-6 text-[#6B7280] lg:block">Commerce Platform Planner</p>
+            <div className="flex items-center gap-3 lg:block">
+              <img
+                src={profileImage}
+                alt="김원태 프로필"
+                onError={useFallbackProfileImage}
+                className="h-10 w-8 rounded-md border border-[#00B894] bg-white object-cover lg:h-24 lg:w-[72px]"
+              />
+              <div>
+                <Link href="/" className="text-[15px] font-bold tracking-[0] text-[#111827] lg:text-2xl">
+                  김원태
+                </Link>
+                <p className="mt-1 hidden text-sm leading-6 text-[#6B7280] lg:block">Commerce Platform Planner</p>
+              </div>
+            </div>
             <p className="mt-6 hidden border-l-2 border-[#00B894] pl-4 text-sm leading-7 text-[#4B5563] lg:block">
               CRM / Message / Analytics / API Integration
             </p>
@@ -113,9 +133,17 @@ export function Header() {
             className="mobile-menu-panel"
           >
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-bold text-[#111827]">김원태</p>
-                <p className="mt-1 text-xs text-[#6B7280]">Commerce Platform Planner</p>
+              <div className="flex items-center gap-3">
+                <img
+                  src={profileImage}
+                  alt="김원태 프로필"
+                  onError={useFallbackProfileImage}
+                  className="h-12 w-9 rounded-md border border-[#00B894] bg-white object-cover"
+                />
+                <div>
+                  <p className="text-sm font-bold text-[#111827]">김원태</p>
+                  <p className="mt-1 text-xs text-[#6B7280]">Commerce Platform Planner</p>
+                </div>
               </div>
               <label
                 htmlFor={toggleId}
