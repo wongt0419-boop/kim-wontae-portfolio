@@ -65,3 +65,14 @@ a {
     padding: 52px 0;
   }
 }
+
+@media (min-width: 1024px) {
+  main,
+  footer {
+    padding-left: 280px;
+  }
+
+  .container {
+    width: min(1040px, calc(100% - 72px));
+  }
+}
