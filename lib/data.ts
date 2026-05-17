@@ -1,9 +1,6 @@
 export const siteNav = [
   { label: "About", href: "/#about" },
   { label: "Projects", href: "/#projects" },
-  { label: "Process", href: "/#process" },
-  { label: "Tools", href: "/#tools" },
-  { label: "Contact", href: "/#contact" },
 ];
 
 export const metrics = [
@@ -20,7 +17,10 @@ export const keywords = [
   "Data Analytics",
   "API Integration",
   "Policy Design",
+  "Project Leading",
 ];
+
+export const toolTags = ["Figma", "Dooray", "Postman", "Zeppelin", "Spreadsheet", "PowerPoint", "Claude/BMAD"];
 
 export const competencies = [
   {
@@ -55,7 +55,7 @@ export const selectedProjects = [
     title: "CRM 그룹",
     subtitle: "회원 행동 조건 기반 타겟 그룹 생성 기능",
     summary:
-      "기존 친구톡 캠페인에서 일회성으로 추출되던 수신 대상을 저장·재사용 가능한 CRM 그룹 구조로 전환했습니다.",
+      "일회성 수신 대상 추출을 저장·재사용 가능한 CRM 그룹 구조로 전환했습니다.",
     impact: ["출시월 30개 → 2026.04 기준 약 200개 상점 사용", "약 6.7배 증가"],
     href: "/projects/crm-group",
   },
@@ -64,7 +64,7 @@ export const selectedProjects = [
     title: "통합 메시지 개편",
     subtitle: "CRM 그룹 기반 모바일 메시지 통합 발송 구조",
     summary:
-      "분리되어 있던 SMS/LMS, 친구톡, 알림톡, 앱푸시 발송 구조를 통합하고 CRM 그룹 기반 발송 경험을 설계했습니다.",
+      "SMS/LMS, 친구톡, 알림톡, 앱푸시 발송 구조를 통합하고 반복 발송·대체 메시지·성과 추적 기능을 설계했습니다.",
     impact: ["타겟팅 → 발송 → 성과 분석 → 리타겟팅 CRM 마케팅 루프 기반 마련"],
     href: "/projects/integrated-message",
   },
@@ -73,7 +73,7 @@ export const selectedProjects = [
     title: "고도몰 애널리틱스",
     subtitle: "데이터레이크 기반 통계/분석 기능 개편",
     summary:
-      "기존 DB 조회 기반 통계를 데이터레이크 기반 애널리틱스 구조로 전환해 속도, 기간, 확장성을 개선했습니다.",
+      "기존 DB 조회 기반 통계를 데이터레이크 기반 애널리틱스 구조로 전환했습니다.",
     impact: ["조회 속도 10~30초 → 5초 내외", "조회 기간 3개월 → 12개월", "조회 상점 수 약 40% 증가"],
     href: "/projects/analytics",
   },

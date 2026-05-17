@@ -60,6 +60,37 @@ a {
   background-size: 44px 44px;
 }
 
+.mobile-menu-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+.mobile-menu-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  transform: translateX(100%);
+  border-left: 1px solid var(--border);
+  background: var(--background);
+  padding: 20px 24px;
+  box-shadow: -24px 0 60px rgba(17, 24, 39, 0.12);
+  transition: transform 200ms ease;
+}
+
+.mobile-menu-toggle:checked ~ .mobile-menu-layer {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu-toggle:checked ~ .mobile-menu-layer .mobile-menu-panel {
+  transform: translateX(0);
+}
+
 @media (max-width: 767px) {
   .section {
     padding: 52px 0;
