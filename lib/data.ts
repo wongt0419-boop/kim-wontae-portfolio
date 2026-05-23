@@ -119,8 +119,9 @@ export const tools = [
 
 export const projectDetails = {
   "crm-group": {
-    title: "CRM 그룹",
-    subtitle: "회원 행동 조건 기반 타겟 그룹 생성 기능",
+    title: "CRM 그룹 관리",
+    subtitle:
+      "쇼핑몰 고객의 정보와 행동 데이터를 기반으로 마케팅 타겟 그룹을 생성하는 기능입니다. 구매 이력, 장바구니, 쿠폰, 마일리지 조건 등을 조합해 맞춤형 메시지 발송과 고객 인사이트 확인에 활용할 수 있습니다.",
     period: "NHN Commerce · Godomall Planning Team",
     role: "기획 리드 · 정책/화면/QA",
     next: { label: "통합 메시지 개편", href: "/projects/integrated-message" },
