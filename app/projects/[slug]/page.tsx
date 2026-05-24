@@ -48,21 +48,42 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     : existsSync(join(process.cwd(), "public", "images", "crm-group-preview.png.png"))
       ? assetPath("/images/crm-group-preview.png.png")
       : assetPath("/images/crm-group-preview-placeholder.svg");
+  const crmStoreGrowthImage = existsSync(join(process.cwd(), "public", "images", "crm-store-usage-growth.png"))
+    ? assetPath("/images/crm-store-usage-growth.png")
+    : "";
   const asIsItems = [
-    "친구톡 캠페인 생성 시점마다 DB 조회로 수신 대상 추출",
-    "추출된 대상은 일회성으로 사용되고 재활용이 어려움",
-    "친구톡 중심의 발송 대상 설정에 머물러 확장성이 낮음",
+    {
+      title: "기본 회원 정보 중심 조회",
+      description: "회원가입일, 주문내역 등 제한적인 조건으로 대상 추출",
+    },
+    {
+      title: "일회성 캠페인 대상",
+      description: "친구톡 발송 시점에만 사용되어 재사용과 확장이 어려움",
+    },
+    {
+      title: "운영 DB 직접 조회",
+      description: "대량 조건 조회 시 발송 지연과 DB 부하 발생",
+    },
   ];
   const toBeItems = [
-    "고객 정보와 행동 조건을 조합해 CRM 그룹으로 저장",
-    "저장된 그룹을 메시지 발송, 반복 마케팅, 인사이트 확인에 재사용",
-    "SMS/LMS, 친구톡, 알림톡, 앱푸시 등 다양한 발송 채널과 연계 가능한 기반 마련",
+    {
+      title: "행동 기반 고객군 생성",
+      description: "로그인, 장바구니, 쿠폰 사용 등 행동 데이터 기반 추출",
+    },
+    {
+      title: "저장형 CRM 그룹 활용",
+      description: "저장된 그룹을 다양한 메시지 채널에서 재사용",
+    },
+    {
+      title: "비동기 조회 구조 적용",
+      description: "별도 저장소와 조회 API로 추출 시간과 부하를 완화",
+    },
   ];
-  const qualitativeImpact = [
-    "일회성 수신 대상 추출 구조를 저장·재사용 가능한 CRM 그룹 구조로 전환",
-    "CRM 그룹을 메시지 발송과 고객 인사이트 확인의 출발점으로 확장",
-    "통합 메시지 개편과 CRM 레시피 자동화 프로젝트의 기반 기능으로 연결",
-    "서드파티 CRM/마케팅 도구 의존도를 낮추고 솔루션 자체 CRM 기능 활용 기반 마련",
+  const qualitativeResults = [
+    "생성된 CRM 그룹을 재사용해 다양한 메시지 채널에서 마케팅 활용 가능",
+    "주문 상태별 조건 추출 등 세부 행동 조건 설정으로 타사 대비 높은 정합성 제공",
+    "외부 CRM 도구 의존도를 낮추고 솔루션 내장 CRM 기능의 활용 기반 강화",
+    "통합 메시지 개편과 CRM 마케팅 자동화 프로젝트의 기반 마련",
   ];
 
   return (
@@ -200,8 +221,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     일회성 타겟 추출에서 저장형 CRM 그룹으로
                   </h2>
                   <p className="mt-4 text-base leading-7 text-[#6B7280]">
-                    기존에는 메시지 발송 시점마다 수신 대상을 추출하는 구조였지만, CRM 그룹 관리에서는
-                    고객군을 저장·재사용하고 메시지 발송과 인사이트 확인으로 확장할 수 있도록 설계했습니다.
+                    기존에는 친구톡 캠페인 발송 시점마다 수신 대상을 일회성으로 추출했지만, CRM 그룹 관리에서는
+                    고객 행동 데이터를 기반으로 그룹을 생성·저장하고 다양한 메시지 채널과 인사이트 확인에 활용할 수 있도록 설계했습니다.
                   </p>
                 </div>
 
@@ -220,47 +241,52 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <section className="section">
               <div className="container">
                 <div className="mb-8 max-w-3xl">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Impact</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">Impact</h2>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
+                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">Project Results</h2>
                   <p className="mt-4 text-base leading-7 text-[#6B7280]">
-                    CRM 그룹 관리는 단순한 대상 추출 기능을 넘어, 고도몰 내장 CRM 기능의 사용성과 확장
-                    가능성을 확인한 프로젝트입니다.
+                    저장형 CRM 그룹 전환 후, 사용 상점 수가 약 51.2배 증가했습니다.
                   </p>
                 </div>
 
                 <div className="grid gap-5 lg:grid-cols-2">
                   <article className="rounded-lg border border-[#E5E1D8] bg-white p-6 md:p-8">
-                    <p className="text-sm font-bold text-[#FF8A3D]">Quantitative Impact</p>
-                    <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                      <MetricBlock value="30개" label="출시월 사용 상점" />
-                      <MetricBlock value="200개" label="2026.04 기준 약" />
-                      <MetricBlock value="6.7배" label="사용 상점 증가" />
-                    </div>
+                    <p className="text-sm font-bold text-[#FF8A3D]">Store Usage Growth</p>
+
+                    <figure className="mt-8 rounded-[20px] border border-[#E5E1D8] bg-white p-2 shadow-[0_12px_30px_rgba(17,24,39,0.05)] sm:p-3">
+                      {crmStoreGrowthImage ? (
+                        <img
+                          src={crmStoreGrowthImage}
+                          alt="CRM 그룹 사용 상점 수 성장 그래프"
+                          className="block h-auto w-full max-w-full rounded-[20px] object-contain"
+                        />
+                      ) : (
+                        <div className="flex min-h-[220px] items-center justify-center rounded-[18px] border border-dashed border-[#E5E1D8] bg-[#F8F7F2] px-4 text-center text-sm font-bold text-[#6B7280]">
+                          CRM 그룹 사용 상점 수 성장 그래프
+                        </div>
+                      )}
+                    </figure>
+
                     <p className="mt-6 text-sm font-medium leading-7 text-[#6B7280]">
-                      1차 오픈 이후 정식 오픈과 리뉴얼을 거치며 지속적으로 사용 상점이 확대되었습니다.
+                      CRM 그룹 오픈 전 친구톡 캠페인 기반 타겟 활용 상점은 11개였으며, CRM 그룹 베타 오픈과 정식 오픈을 거쳐 2026.04 기준 563개 상점이 사용하는 기능으로 성장했습니다.
                     </p>
                   </article>
 
                   <article className="rounded-lg border border-[#E5E1D8] bg-white p-6 md:p-8">
-                    <p className="text-sm font-bold text-[#00B894]">Qualitative Impact</p>
+                    <p className="text-sm font-bold text-[#00B894]">Qualitative Results</p>
                     <ul className="mt-5 grid gap-3">
-                      {qualitativeImpact.map((impact) => (
-                        <li key={impact} className="flex gap-3 text-sm font-medium leading-7 text-[#4B5563]">
+                      {qualitativeResults.map((result) => (
+                        <li
+                          key={result}
+                          className="flex gap-3 rounded-md border border-[#E5E1D8] bg-[#F8F7F2] px-4 py-3 text-sm font-medium leading-7 text-[#4B5563]"
+                        >
                           <span className="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00B894]/12 text-xs font-bold text-[#00B894]">
                             ✓
                           </span>
-                          <span>{impact}</span>
+                          <span>{result}</span>
                         </li>
                       ))}
                     </ul>
                   </article>
-                </div>
-
-                <div className="mt-5 rounded-lg border border-[#E5E1D8] bg-[#FFFEFA] p-5">
-                  <p className="text-sm font-medium leading-7 text-[#6B7280]">
-                    복잡한 고객 조건을 단순히 많이 제공하는 것보다, 운영자가 실제 마케팅 액션으로 연결할
-                    수 있는 고객군 단위로 구조화하는 것이 중요하다는 점을 배웠습니다.
-                  </p>
                 </div>
               </div>
             </section>
@@ -315,7 +341,15 @@ function Info({ label, children }: { label: string; children: React.ReactNode })
   );
 }
 
-function CompareCard({ title, tone, items }: { title: string; tone: "muted" | "teal"; items: string[] }) {
+function CompareCard({
+  title,
+  tone,
+  items,
+}: {
+  title: string;
+  tone: "muted" | "teal";
+  items: { title: string; description: string }[];
+}) {
   const isTeal = tone === "teal";
 
   return (
@@ -328,27 +362,23 @@ function CompareCard({ title, tone, items }: { title: string; tone: "muted" | "t
       <ul className="mt-5 grid gap-3">
         {items.map((item, index) => (
           <li
-            key={item}
-            className={`rounded-md border px-4 py-3 text-sm font-semibold leading-6 ${
+            key={item.title}
+            className={`rounded-md border px-4 py-3 text-sm leading-6 ${
               isTeal
-                ? "border-[#00B894]/18 bg-[#00B894]/6 text-[#111827]"
+                ? "border-[#00B894]/20 bg-[rgba(0,184,148,0.06)] text-[#111827]"
                 : "border-[#E5E1D8] bg-[#F8F7F2] text-[#4B5563]"
             }`}
           >
-            <span className={isTeal ? "mr-2 text-[#00B894]" : "mr-2 text-[#9CA3AF]"}>{index + 1}.</span>
-            {item}
+            <div className="flex gap-2">
+              <span className={`font-bold ${isTeal ? "text-[#00B894]" : "text-[#9CA3AF]"}`}>{index + 1}.</span>
+              <div>
+                <p className="font-bold text-[#111827]">{item.title}</p>
+                <p className="mt-1 text-sm font-medium text-[#6B7280]">{item.description}</p>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
     </article>
-  );
-}
-
-function MetricBlock({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-lg border border-[#E5E1D8] bg-[#F8F7F2] p-4">
-      <p className="text-3xl font-bold text-[#111827] md:text-4xl">{value}</p>
-      <p className="mt-2 text-xs font-semibold leading-5 text-[#6B7280]">{label}</p>
-    </div>
   );
 }
