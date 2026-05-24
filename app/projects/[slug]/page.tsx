@@ -81,10 +81,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   ];
   const qualitativeResults = [
     "생성된 CRM 그룹을 재사용해 다양한 메시지 채널에서 마케팅 활용 가능",
-    "주문 상태별 조건 추출 등 세부 행동 조건 설정으로 타사 대비 높은 정합성 제공",
-    "외부 CRM 도구 의존도를 낮추고 솔루션 내장 CRM 기능의 활용 기반 강화",
+    "주문 상태별 조건 추출 등 세부 행동 조건을 제공해 타사 대비 높은 정합성 확보",
+    "외부 CRM 도구 의존도를 낮추고 솔루션 내장 CRM 기능 활용 기반 강화",
     "통합 메시지 개편과 CRM 마케팅 자동화 프로젝트의 기반 마련",
   ];
+  const textFlow = "leading-[1.65] [word-break:keep-all] [overflow-wrap:break-word]";
 
   return (
     <>
@@ -99,7 +100,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight tracking-[0] text-[#111827] md:text-6xl">
               {project.title}
             </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-[#6B7280]">{project.subtitle}</p>
+            <p className={`mt-5 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{project.subtitle}</p>
           </div>
         </section>
 
@@ -110,20 +111,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <Info label="Period">
                   <div className="space-y-2">
                     <p>2024.10 ~ 현재</p>
-                    <p className="text-[#6B7280]">
-                      서비스 베타 오픈 2025.01
-                      <br />
-                      서비스 정식 오픈 2025.05
-                    </p>
+                    <div className="space-y-1 text-[#6B7280]">
+                      <p>서비스 베타 오픈 2025.01</p>
+                      <p>서비스 정식 오픈 2025.05</p>
+                    </div>
                   </div>
                 </Info>
                 <Info label="Role">
                   <div className="space-y-2">
                     <p>PM / Policy / UX / QA</p>
-                    <p className="font-medium text-[#6B7280]">
-                      서비스 정책 설계, 화면 기획, QA,
-                      <br />
-                      오픈 후 도메인 유지보수 운영까지 담당
+                    <p className={`font-medium text-[#6B7280] ${textFlow}`}>
+                      서비스 정책 설계, 화면 기획, QA, 오픈 후 도메인 유지보수 대응까지
                     </p>
                   </div>
                 </Info>
@@ -155,11 +153,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <section className="border-b border-[#E5E1D8] bg-[#F8F7F2] py-12 md:py-16">
             <div className="container">
               <div className="mb-7 max-w-3xl">
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Product Preview</p>
-                <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-3xl">CRM 그룹 관리 화면</h2>
-                <p className="mt-4 text-base leading-7 text-[#6B7280]">
-                  쇼핑몰 운영자가 추천 타겟 그룹을 확인하고, 생성된 CRM 그룹을 메시지 발송에 활용할 수
-                  있는 관리 화면입니다.
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">User Flow</p>
+                <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
+                  CRM 그룹을 처음 사용하는 상점도 쉽게 시작할 수 있도록, 활용도가 높은 세그먼트 패턴을 추천 타겟으로 제공했습니다.
+                  운영자는 추천 타겟을 바로 사용하거나 직접 CRM 그룹을 생성하고, 추출된 고객을 확인한 뒤 메시지 발송까지 연결할 수 있습니다.
                 </p>
               </div>
 
@@ -196,16 +193,44 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <div className="mt-6">
+                <p className="text-sm font-bold text-[#00B894]">Steps</p>
+                <div className="mt-3 grid gap-3 md:grid-cols-3">
                 {[
-                  "고객 행동 기반 추천 타겟 그룹 제공",
-                  "생성된 CRM 그룹 리스트 관리",
-                  "CRM 그룹에서 메시지 발송으로 바로 연결",
-                ].map((point) => (
-                  <div key={point} className="rounded-lg border border-[#E5E1D8] bg-white px-4 py-3 text-sm font-semibold leading-6 text-[#111827]">
-                    {point}
+                  {
+                    label: "01",
+                    title: "추천 타겟으로 시작",
+                    description:
+                      "CRM 마케팅 활용도가 높은 세그먼트 패턴을 추천 타겟으로 제공해, 처음 사용하는 상점도 쉽게 시작할 수 있도록 설계했습니다.",
+                  },
+                  {
+                    label: "02",
+                    title: "CRM 그룹 직접 생성",
+                    description:
+                      "추천 타겟이 맞지 않는 경우, 운영자가 가입일·구매 이력·장바구니 등 조건을 조합해 직접 그룹을 생성할 수 있습니다.",
+                  },
+                  {
+                    label: "03",
+                    title: "고객 확인 후 메시지 발송",
+                    description:
+                      "추출된 고객군과 인사이트를 확인하고, 필요 시 해당 CRM 그룹을 수신 대상으로 메시지 발송까지 연결할 수 있습니다.",
+                  },
+                ].map((step, index) => (
+                  <div
+                    key={step.label}
+                    className="relative rounded-lg border border-[#E5E1D8] bg-white px-4 py-4 text-sm leading-6 text-[#111827]"
+                  >
+                    {index < 2 ? (
+                      <span className="absolute right-[-18px] top-1/2 z-10 hidden -translate-y-1/2 text-lg font-bold text-[#00B894]/45 md:block">
+                        →
+                      </span>
+                    ) : null}
+                    <p className="text-xs font-bold tracking-[0.14em] text-[#00B894]">{step.label}</p>
+                    <p className="mt-2 font-bold text-[#111827]">{step.title}</p>
+                    <p className={`mt-1 text-sm font-medium text-[#6B7280] ${textFlow}`}>{step.description}</p>
                   </div>
                 ))}
+                </div>
               </div>
             </div>
           </section>
@@ -220,7 +245,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
                     일회성 타겟 추출에서 저장형 CRM 그룹으로
                   </h2>
-                  <p className="mt-4 text-base leading-7 text-[#6B7280]">
+                  <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
                     기존에는 친구톡 캠페인 발송 시점마다 수신 대상을 일회성으로 추출했지만, CRM 그룹 관리에서는
                     고객 행동 데이터를 기반으로 그룹을 생성·저장하고 다양한 메시지 채널과 인사이트 확인에 활용할 수 있도록 설계했습니다.
                   </p>
@@ -243,7 +268,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
                   <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">Project Results</h2>
-                  <p className="mt-4 text-base leading-7 text-[#6B7280]">
+                  <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
                     저장형 CRM 그룹 전환 후, 사용 상점 수가 약 51.2배 증가했습니다.
                   </p>
                 </div>
@@ -266,8 +291,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       )}
                     </figure>
 
-                    <p className="mt-6 text-sm font-medium leading-7 text-[#6B7280]">
-                      CRM 그룹 오픈 전 친구톡 캠페인 기반 타겟 활용 상점은 11개였으며, CRM 그룹 베타 오픈과 정식 오픈을 거쳐 2026.04 기준 563개 상점이 사용하는 기능으로 성장했습니다.
+                    <p className={`mt-6 text-sm font-medium text-[#6B7280] ${textFlow}`}>
+                      CRM 그룹 오픈 전 친구톡 캠페인 기반 타겟 활용 상점은 11개였으며, CRM 그룹 베타 오픈과 정식 오픈을 거쳐 2026.05 기준 563개 상점이 사용하는 기능으로 성장했습니다.
                     </p>
                   </article>
 
@@ -282,7 +307,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                           <span className="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00B894]/12 text-xs font-bold text-[#00B894]">
                             ✓
                           </span>
-                          <span>{result}</span>
+                          <span className={textFlow}>{result}</span>
                         </li>
                       ))}
                     </ul>
@@ -373,7 +398,9 @@ function CompareCard({
               <span className={`font-bold ${isTeal ? "text-[#00B894]" : "text-[#9CA3AF]"}`}>{index + 1}.</span>
               <div>
                 <p className="font-bold text-[#111827]">{item.title}</p>
-                <p className="mt-1 text-sm font-medium text-[#6B7280]">{item.description}</p>
+                <p className="mt-1 text-sm font-medium leading-[1.65] text-[#6B7280] [overflow-wrap:break-word] [word-break:keep-all]">
+                  {item.description}
+                </p>
               </div>
             </div>
           </li>
