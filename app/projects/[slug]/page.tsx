@@ -96,7 +96,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <Link href="/" className="text-sm font-bold text-[#00B894]">
               ← Back to Home
             </Link>
-            <p className="mt-10 text-sm font-bold text-[#FF8A3D]">Project Case Study</p>
+            <p className="mt-10 text-sm font-bold text-[#FF8A3D]">Project 1. Customer Segmentation</p>
             <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight tracking-[0] text-[#111827] md:text-6xl">
               {project.title}
             </h1>
@@ -154,9 +154,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="container">
               <div className="mb-7 max-w-3xl">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">User Flow</p>
+                <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                  CRM 설정의 진입 장벽을 낮춘 사용자 흐름
+                </h2>
                 <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
                   CRM 그룹을 처음 사용하는 상점도 쉽게 시작할 수 있도록, 활용도가 높은 세그먼트 패턴을 추천 타겟으로 제공했습니다.
-                  운영자는 추천 타겟을 바로 사용하거나 직접 CRM 그룹을 생성하고, 추출된 고객을 확인한 뒤 메시지 발송까지 연결할 수 있습니다.
+                  운영자는 추천 타겟을 기반으로 고객군을 생성하거나 직접 조건을 조합해 CRM 그룹을 만들고, 추출된 고객을 확인한 뒤 메시지 발송까지 연결할 수 있습니다.
                 </p>
               </div>
 
@@ -194,23 +197,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
 
               <div className="mt-6">
-                <p className="text-sm font-bold text-[#00B894]">Steps</p>
-                <div className="mt-3 grid gap-3 md:grid-cols-3">
+                <div className="grid gap-3 md:grid-cols-3">
                 {[
                   {
-                    label: "01",
+                    label: "Step 1",
                     title: "추천 타겟으로 시작",
                     description:
                       "CRM 마케팅 활용도가 높은 세그먼트 패턴을 추천 타겟으로 제공해, 처음 사용하는 상점도 쉽게 시작할 수 있도록 설계했습니다.",
                   },
                   {
-                    label: "02",
+                    label: "Step 2",
                     title: "CRM 그룹 직접 생성",
                     description:
                       "추천 타겟이 맞지 않는 경우, 운영자가 가입일·구매 이력·장바구니 등 조건을 조합해 직접 그룹을 생성할 수 있습니다.",
                   },
                   {
-                    label: "03",
+                    label: "Step 3",
                     title: "고객 확인 후 메시지 발송",
                     description:
                       "추출된 고객군과 인사이트를 확인하고, 필요 시 해당 CRM 그룹을 수신 대상으로 메시지 발송까지 연결할 수 있습니다.",
@@ -241,7 +243,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <section className="section border-b border-[#E5E1D8]">
               <div className="container">
                 <div className="mb-8 max-w-3xl">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">AS-IS / TO-BE</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">PROJECT GOAL</p>
                   <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
                     일회성 타겟 추출에서 저장형 CRM 그룹으로
                   </h2>
@@ -267,15 +269,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="container">
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">Project Results</h2>
-                  <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
-                    저장형 CRM 그룹 전환 후, 사용 상점 수가 약 51.2배 증가했습니다.
-                  </p>
+                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                    고객 맞춤 메시지 기반 구매 전환 유도
+                  </h2>
                 </div>
 
                 <div className="grid gap-5 lg:grid-cols-2">
                   <article className="rounded-lg border border-[#E5E1D8] bg-white p-6 md:p-8">
-                    <p className="text-sm font-bold text-[#FF8A3D]">Store Usage Growth</p>
+                    <p className="text-sm font-bold text-[#FF8A3D]">Quantitative Results</p>
 
                     <figure className="mt-8 rounded-[20px] border border-[#E5E1D8] bg-white p-2 shadow-[0_12px_30px_rgba(17,24,39,0.05)] sm:p-3">
                       {crmStoreGrowthImage ? (
