@@ -148,7 +148,8 @@ export const projectDetails = {
   },
   "integrated-message": {
     title: "통합 메시지 개편",
-    subtitle: "CRM 그룹 기반 모바일 메시지 통합 발송 구조",
+    subtitle:
+      "분리되어 있던 SMS/LMS, 친구톡, 알림톡, 앱푸시 발송 기능을 하나의 메시지 발송 흐름으로 통합했습니다. CRM 그룹 기반 수신 대상 선택, 메시지 발송, 성과 추적까지 연결해 타겟 메시지 발송부터 결과 확인까지 쉽게 통합 관리할 수 있도록 개선했습니다.",
     period: "NHN Commerce · Message Domain",
     role: "기획 리드 · 발송 정책/성과 추적",
     next: { label: "고도몰 애널리틱스", href: "/projects/analytics" },
