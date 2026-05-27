@@ -39,13 +39,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const entries = Object.entries(project.sections);
   const isCrmGroup = slug === "crm-group";
   const isIntegratedMessage = slug === "integrated-message";
+  const isAnalytics = slug === "analytics";
   const eyebrow = isCrmGroup
     ? "Project 1. Customer Segmentation"
     : isIntegratedMessage
       ? "Project 2. Integrated CRM Message System"
-      : "Project Case Study";
+      : isAnalytics
+        ? "Project 3. Analytics"
+        : "Project Case Study";
   const integratedDescription =
     "분리되어 있던 SMS/LMS, 친구톡, 알림톡, 앱푸시 발송 기능을 하나의 메시지 발송 흐름으로 통합했습니다. CRM 그룹 기반 수신 대상 선택, 메시지 발송, 성과 추적까지 연결해 타겟 메시지 발송부터 결과 확인까지 쉽게 통합 관리할 수 있도록 개선했습니다.";
+  const analyticsDescription =
+    "쇼핑몰 운영자가 방문, 주문, 회원, 유입, 페이지 데이터를 더 빠르고 넓은 기간으로 확인할 수 있도록 기존 통계 메뉴를 데이터레이크 기반 애널리틱스 구조로 개편한 프로젝트입니다. 조회 속도와 조회 기간을 개선하고, 향후 UTM·퍼널·사용자 행동 분석으로 확장 가능한 데이터 분석 기반을 설계했습니다.";
   const crmPreviewVideo = existsSync(join(process.cwd(), "public", "images", "crm-group-preview.mp4"))
     ? assetPath("/images/crm-group-preview.mp4")
     : existsSync(join(process.cwd(), "public", "images", "crm-group-preview.mp4.mp4"))
@@ -69,6 +74,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     join(process.cwd(), "public", "images", "integrated-message-crm-store-growth.png"),
   )
     ? assetPath("/images/integrated-message-crm-store-growth.png")
+    : "";
+  const analyticsFlowVideo = existsSync(join(process.cwd(), "public", "videos", "analytics-flow.mp4"))
+    ? assetPath("/videos/analytics-flow.mp4")
+    : "";
+  const analyticsFlowImage = existsSync(join(process.cwd(), "public", "images", "analytics-flow.png"))
+    ? assetPath("/images/analytics-flow.png")
+    : "";
+  const analyticsPerformanceImage = existsSync(
+    join(process.cwd(), "public", "images", "analytics-performance-growth.png"),
+  )
+    ? assetPath("/images/analytics-performance-growth.png")
     : "";
   const asIsItems = [
     {
@@ -157,6 +173,61 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     "숏링크 기반 성과 추적으로 메시지별 반응과 구매 전환 흐름을 확인할 수 있는 분석 구조 마련",
     "CRM 타겟팅 → 통합 메시지 → 성과 분석 → 리타겟팅으로 이어지는 마케팅 전환 루프 구축",
   ];
+  const analyticsSteps = [
+    {
+      label: "01",
+      title: "핵심 지표 확인",
+      description:
+        "운영자가 방문자 수, 방문횟수, 페이지뷰, 주문건수, 주문금액 등 쇼핑몰 운영 지표를 빠르게 확인할 수 있도록 설계했습니다.",
+    },
+    {
+      label: "02",
+      title: "유입과 페이지 흐름 분석",
+      description:
+        "방문 출처, 랜딩페이지, 페이지별 PV, 최근 방문자 로그를 통해 고객이 어디서 들어오고 어떤 페이지를 보는지 확인할 수 있도록 구성했습니다.",
+    },
+    {
+      label: "03",
+      title: "운영 의사결정에 활용",
+      description:
+        "조회 속도와 조회 기간을 개선해 운영자가 장기 추세와 주요 지표 변화를 확인하고, 쇼핑몰 운영 전략을 점검할 수 있는 기반을 마련했습니다.",
+    },
+  ];
+  const analyticsAsIsItems = [
+    {
+      title: "운영 DB 직접 조회",
+      description: "주문·방문 데이터가 많을수록 조회 시간이 길어지고 DB 부하가 발생",
+    },
+    {
+      title: "제한적인 조회 기간",
+      description: "기존 통계는 최대 3개월 조회에 그쳐 장기 추세 확인이 어려움",
+    },
+    {
+      title: "기본 지표 중심의 통계",
+      description: "방문자 수, 페이지뷰 중심으로 제공되어 유입·행동 흐름 분석 확장에 한계",
+    },
+  ];
+  const analyticsToBeItems = [
+    {
+      title: "데이터레이크 기반 조회 구조",
+      description: "웹로그 데이터를 별도 저장 구조로 전환해 조회 속도와 운영 DB 부하를 개선",
+    },
+    {
+      title: "조회 기간 12개월 확대",
+      description: "3개월 제한을 12개월로 확대해 장기 추세와 월별 변화를 확인 가능",
+    },
+    {
+      title: "분석 확장 기반 마련",
+      description: "referer, 디바이스 정보, 랜딩페이지, 최근 방문자 로그 등 후속 분석에 필요한 수집 항목을 확장",
+    },
+  ];
+  const analyticsQualitativeResults = [
+    "운영자가 방문, 주문, 회원, 유입, 페이지 데이터를 한 흐름에서 확인할 수 있는 분석 경험 제공",
+    "운영 DB 직접 조회 부담을 줄이고 데이터레이크 기반 분석 구조로 전환",
+    "검색로봇 방문 집계 제외 등 방문 데이터 신뢰도 개선",
+    "referer, 디바이스 정보, 랜딩페이지 등 후속 분석 확장을 위한 수집 항목 확대",
+    "UTM, 퍼널 분석, 사용자 이동 경로 분석 등 고도화 스펙으로 확장 가능한 기반 마련",
+  ];
   const textFlow = "leading-[1.65] [word-break:keep-all] [overflow-wrap:break-word]";
 
   return (
@@ -174,6 +245,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </h1>
             {isIntegratedMessage ? (
               <p className={`mt-5 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{integratedDescription}</p>
+            ) : isAnalytics ? (
+              <p className={`mt-5 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{analyticsDescription}</p>
             ) : (
               <p className={`mt-5 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{project.subtitle}</p>
             )}
@@ -241,6 +314,35 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       className="mt-4 inline-flex rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
                     >
                       활용 콘텐츠 바로가기
+                    </a>
+                  </div>
+                </Info>
+              </>
+            ) : isAnalytics ? (
+              <>
+                <Info label="Timeline">
+                  <div className="space-y-2">
+                    <p>2025.03 ~ 2025.09</p>
+                    <p className="font-medium text-[#6B7280]">Official Launch · 2025.09</p>
+                  </div>
+                </Info>
+                <Info label="Role">
+                  <div className="space-y-2">
+                    <p>PM / Policy / UX / QA</p>
+                    <p className={`font-medium text-[#6B7280] ${textFlow}`}>
+                      지표 정의, 화면 기획, 데이터 정합성 검토, QA, 오픈 후 운영 대응까지 담당
+                    </p>
+                  </div>
+                </Info>
+                <Info label="Guide">
+                  <div>
+                    <p>고도몰 애널리틱스 가이드</p>
+                    {/* TODO: Replace with the confirmed analytics guide URL. */}
+                    <a
+                      href="#"
+                      className="mt-4 inline-flex rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
+                    >
+                      서비스 가이드 바로가기 →
                     </a>
                   </div>
                 </Info>
@@ -427,6 +529,85 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
         ) : null}
 
+        {isAnalytics ? (
+          <section className="border-b border-[#E5E1D8] bg-[#F8F7F2] py-12 md:py-16">
+            <div className="container">
+              <div className="mb-7 max-w-3xl">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">User Flow</p>
+                <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                  운영자가 핵심 데이터를 빠르게 확인하는 분석 흐름
+                </h2>
+                <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
+                  기존 통계는 메뉴별로 데이터를 확인해야 하고 조회 속도와 기간에 제약이 있었습니다. 애널리틱스에서는 운영자가 방문, 주문, 회원, 유입, 페이지 지표를 한 흐름에서 확인하고, 쇼핑몰 운영 의사결정에 활용할 수 있도록 데이터 확인 경험을 재구성했습니다.
+                </p>
+              </div>
+
+              <div className="mx-auto max-w-5xl rounded-[24px] border border-[#E5E1D8] bg-white p-3 shadow-[0_22px_54px_rgba(17,24,39,0.08)] md:p-4">
+                <div className="flex items-center gap-2 border-b border-[#E5E1D8] px-3 py-3">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#FF8A3D]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#E5E1D8]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#00B894]" />
+                  <span className="ml-3 hidden text-xs font-medium text-[#9CA3AF] sm:inline">
+                    godomall analytics preview
+                  </span>
+                </div>
+                <div className="overflow-hidden rounded-[20px] bg-[#F8F7F2]">
+                  {analyticsFlowVideo ? (
+                    <video
+                      src={analyticsFlowVideo}
+                      className="block h-auto w-full rounded-[20px] object-contain"
+                      aria-label="고도몰 애널리틱스 사용자 흐름 영상"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      poster={analyticsFlowImage || undefined}
+                    >
+                      고도몰 애널리틱스 사용자 흐름 영상
+                    </video>
+                  ) : analyticsFlowImage ? (
+                    <img
+                      src={analyticsFlowImage}
+                      alt="고도몰 애널리틱스 사용자 흐름"
+                      className="block h-auto w-full rounded-[20px] object-contain"
+                    />
+                  ) : (
+                    <div className="flex min-h-[320px] items-center justify-center px-5 py-12 text-center">
+                      <div>
+                        <p className="text-2xl font-bold text-[#111827]">고도몰 애널리틱스 사용자 흐름</p>
+                        <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
+                          방문·주문·회원·유입·페이지 데이터를 확인하는 애널리틱스 화면 흐름입니다.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <div className="grid gap-3 md:grid-cols-3">
+                  {analyticsSteps.map((step, index) => (
+                    <div
+                      key={step.label}
+                      className="relative rounded-lg border border-[#E5E1D8] bg-white px-4 py-4 text-sm leading-6 text-[#111827]"
+                    >
+                      {index < 2 ? (
+                        <span className="absolute right-[-18px] top-1/2 z-10 hidden -translate-y-1/2 text-lg font-bold text-[#00B894]/45 md:block">
+                          →
+                        </span>
+                      ) : null}
+                      <p className="text-xs font-bold tracking-[0.14em] text-[#00B894]">{step.label}</p>
+                      <p className="mt-2 font-bold text-[#111827]">{step.title}</p>
+                      <p className={`mt-1 text-sm font-medium text-[#6B7280] ${textFlow}`}>{step.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
+
         {isCrmGroup ? (
           <>
             <section className="section border-b border-[#E5E1D8]">
@@ -584,6 +765,92 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </section>
           </>
+        ) : isAnalytics ? (
+          <>
+            <section className="section border-b border-[#E5E1D8]">
+              <div className="container">
+                <div className="mb-8 max-w-3xl">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">PROJECT GOAL</p>
+                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                    DB 직접 조회 기반 통계에서 데이터레이크 기반 애널리틱스로
+                  </h2>
+                  <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
+                    기존 통계는 운영 DB를 직접 조회해 정확성은 있었지만, 조회 속도와 조회 기간, 분석 확장성에 한계가 있었습니다. 애널리틱스 개편에서는 웹로그 데이터를 별도 저장 구조로 전환하고, 운영자가 더 빠르고 넓은 기간의 데이터를 확인할 수 있도록 설계했습니다.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 lg:grid-cols-[1fr_64px_1fr] lg:items-stretch">
+                  <CompareCard title="AS-IS" tone="muted" items={analyticsAsIsItems} />
+                  <div className="flex items-center justify-center">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#E5E1D8] bg-white text-xl font-bold text-[#00B894] shadow-[0_10px_28px_rgba(17,24,39,0.06)] lg:h-14 lg:w-14">
+                      →
+                    </div>
+                  </div>
+                  <CompareCard title="TO-BE" tone="teal" items={analyticsToBeItems} />
+                </div>
+              </div>
+            </section>
+
+            <section className="section">
+              <div className="container">
+                <div className="mb-8 max-w-3xl">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
+                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                    빠른 조회와 긴 조회 기간으로 데이터 확인 경험 개선
+                  </h2>
+                  <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
+                    운영자가 기다려서 확인하던 통계를 더 빠르고 넓은 기간으로 확인할 수 있도록 개선하고, 향후 고도화 분석 기능을 추가할 수 있는 기반을 마련했습니다.
+                  </p>
+                </div>
+
+                <div className="grid gap-5 lg:grid-cols-2">
+                  <article className="rounded-lg border border-[#E5E1D8] bg-white p-6 md:p-8">
+                    <p className="text-sm font-bold text-[#FF8A3D]">Quantitative Results</p>
+
+                    <figure className="mt-8 rounded-[20px] border border-[#E5E1D8] bg-white p-2 shadow-[0_12px_30px_rgba(17,24,39,0.05)] sm:p-3">
+                      {analyticsPerformanceImage ? (
+                        <img
+                          src={analyticsPerformanceImage}
+                          alt="애널리틱스 정량 성과 그래프"
+                          className="block h-auto w-full max-w-full rounded-[20px] object-contain"
+                        />
+                      ) : (
+                        <div className="flex min-h-[260px] items-center justify-center rounded-[18px] border border-dashed border-[#E5E1D8] bg-[#F8F7F2] px-5 py-12 text-center">
+                          <div>
+                            <p className="text-lg font-bold text-[#111827]">애널리틱스 정량 성과 그래프</p>
+                            <p className={`mt-3 text-sm font-medium text-[#6B7280] ${textFlow}`}>
+                              조회 속도, 조회 기간, 조회 상점 수 증가를 시각화한 그래프가 들어갈 영역입니다.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </figure>
+
+                    <p className={`mt-6 text-sm font-medium text-[#6B7280] ${textFlow}`}>
+                      기존 통계 대비 조회 속도를 약 10~30초에서 5초 내외로 개선하고, 조회 가능 기간을 3개월에서 12개월로 확대했습니다. 워크데이 기준 조회 상점 수는 약 500개에서 약 700개로 증가했습니다.
+                    </p>
+                  </article>
+
+                  <article className="rounded-lg border border-[#E5E1D8] bg-white p-6 md:p-8">
+                    <p className="text-sm font-bold text-[#00B894]">Qualitative Results</p>
+                    <ul className="mt-5 grid gap-3">
+                      {analyticsQualitativeResults.map((result) => (
+                        <li
+                          key={result}
+                          className="flex gap-3 rounded-md border border-[#E5E1D8] bg-[#F8F7F2] px-4 py-3 text-sm font-medium leading-7 text-[#4B5563]"
+                        >
+                          <span className="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00B894]/12 text-xs font-bold text-[#00B894]">
+                            ✓
+                          </span>
+                          <span className={textFlow}>{result}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </section>
+          </>
         ) : (
           <section className="section">
             <div className="container grid gap-5">
@@ -611,12 +878,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             >
               Back to Home
             </Link>
-            <Link
-              href={project.next.href}
-              className="inline-flex justify-center rounded-full bg-[#00B894] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#009f80]"
-            >
-              Next Project · {project.next.label}
-            </Link>
+            {isAnalytics ? (
+              <Link
+                href="/projects/integrated-message"
+                className="inline-flex justify-center rounded-full bg-[#00B894] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#009f80]"
+              >
+                Previous Project · 통합 메시지 개편
+              </Link>
+            ) : (
+              <Link
+                href={project.next.href}
+                className="inline-flex justify-center rounded-full bg-[#00B894] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#009f80]"
+              >
+                Next Project · {project.next.label}
+              </Link>
+            )}
           </div>
         </section>
       </main>
