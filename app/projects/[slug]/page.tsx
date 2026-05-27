@@ -106,17 +106,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   ];
   const integratedSteps = [
     {
-      label: "01",
+      label: "Step 1",
       title: "CRM 그룹 수신 대상 선택",
       description: "생성된 CRM 그룹을 메시지 발송 수신 대상으로 선택해 타겟 고객군을 재사용합니다.",
     },
     {
-      label: "02",
+      label: "Step 2",
       title: "채널별 메시지 작성과 발송 설정",
       description: "SMS/LMS, 친구톡, 알림톡, 앱푸시 채널별 정책을 반영해 메시지 작성, 예약/반복 발송, 대체 메시지를 설정합니다.",
     },
     {
-      label: "03",
+      label: "Step 3",
       title: "성과 기반 마케팅 인사이트 제공",
       description:
         "숏링크 기반으로 클릭 수, 로그인 수, 주문 금액 등 발송 성과를 확인하고, 메시지 내용과 타겟 조건을 개선할 수 있는 인사이트를 얻을 수 있습니다.",
@@ -151,10 +151,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     },
   ];
   const keyOutcomes = [
-    "CRM 그룹을 수신 대상으로 연계해 고객군별 타겟 메시지 발송 가능",
-    "반복 발송과 대체 메시지로 캠페인 운영과 도달 가능성 확대",
-    "숏링크 기반 성과 추적으로 메시지 개선 인사이트 제공",
-    "통합 메시지 구조를 CRM 마케팅 자동화 프로젝트의 기반으로 확장",
+    "분산된 메시지 채널을 하나의 발송 흐름으로 통합해 CRM 메시지 발송 관리 효율 개선",
+    "CRM 그룹을 수신 대상으로 연계해 고객군별 타겟 메시지 발송 기반 마련",
+    "반복 발송과 대체 메시지 기능을 통해 캠페인 운영과 메시지 도달률 상승",
+    "숏링크 기반 성과 추적으로 메시지별 반응과 구매 전환 흐름을 확인할 수 있는 분석 구조 마련",
+    "CRM 타겟팅 → 통합 메시지 → 성과 분석 → 리타겟팅으로 이어지는 마케팅 전환 루프 구축",
   ];
   const textFlow = "leading-[1.65] [word-break:keep-all] [overflow-wrap:break-word]";
 
@@ -218,7 +219,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <>
                 <Info label="PERIOD">
                   <div className="space-y-2">
-                    <p>2025.10 ~ 2026.03</p>
+                    <p>2025.10 ~ 현재</p>
                     <p className="font-medium text-[#6B7280]">서비스 정식 오픈 2026.03</p>
                   </div>
                 </Info>
@@ -362,14 +363,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <span className="h-2.5 w-2.5 rounded-full bg-[#E5E1D8]" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#00B894]" />
                   <span className="ml-3 hidden text-xs font-medium text-[#9CA3AF] sm:inline">
-                    integrated message flow
+                    godomall CRM message preview
                   </span>
                 </div>
                 <div className="overflow-hidden rounded-[20px] bg-[#F8F7F2]">
                   {integratedMessageVideo ? (
                     <video
                       src={integratedMessageVideo}
-                      className="block h-auto w-full rounded-[20px]"
+                      className="block h-auto w-full rounded-[20px] object-contain"
+                      aria-label="통합 메시지 개편 사용자 흐름 영상"
                       autoPlay
                       loop
                       muted
@@ -377,7 +379,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       preload="metadata"
                       poster={integratedMessageImage || undefined}
                     >
-                      통합 메시지 발송 흐름 영상
+                      {integratedMessageImage ? (
+                        <img src={integratedMessageImage} alt="통합 메시지 개편 사용자 흐름 영상" />
+                      ) : (
+                        "통합 메시지 개편 사용자 흐름 영상"
+                      )}
                     </video>
                   ) : integratedMessageImage ? (
                     <img
@@ -505,7 +511,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <section className="section border-b border-[#E5E1D8]">
               <div className="container">
                 <div className="mb-8 max-w-3xl">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">AS-IS / TO-BE</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">PROJECT GOAL</p>
                   <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
                     분산된 메시지 발송에서 CRM 기반 통합 메시지 운영으로
                   </h2>
@@ -531,11 +537,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
                   <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
-                    CRM 그룹 기반 메시지 발송 활용 상점 수 증가
+                    CRM 메시지부터 성과 분석, 리타겟팅까지 이어지는 마케팅 전환 루프 기반 마련
                   </h2>
-                  <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
-                    통합 메시지 개편을 통해 CRM 그룹을 수신 대상으로 활용한 메시지 발송 흐름이 확대되었습니다.
-                  </p>
                 </div>
 
                 <div className="grid gap-5 lg:grid-cols-2">
@@ -562,7 +565,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </article>
 
                   <article className="rounded-lg border border-[#E5E1D8] bg-white p-6 md:p-8">
-                    <p className="text-sm font-bold text-[#00B894]">Key Outcomes</p>
+                    <p className="text-sm font-bold text-[#00B894]">Qualitative Results</p>
                     <ul className="mt-5 grid gap-3">
                       {keyOutcomes.map((outcome) => (
                         <li
