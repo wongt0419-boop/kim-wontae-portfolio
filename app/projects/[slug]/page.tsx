@@ -50,7 +50,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const integratedDescription =
     "분리되어 있던 SMS/LMS, 친구톡, 알림톡, 앱푸시 발송 기능을 하나의 메시지 발송 흐름으로 통합했습니다. CRM 그룹 기반 수신 대상 선택, 메시지 발송, 성과 추적까지 연결해 타겟 메시지 발송부터 결과 확인까지 쉽게 통합 관리할 수 있도록 개선했습니다.";
   const analyticsDescription =
-    "쇼핑몰 운영자가 방문, 주문, 회원, 유입, 페이지 데이터를 더 빠르고 넓은 기간으로 확인할 수 있도록 기존 통계 메뉴를 데이터레이크 기반 애널리틱스 구조로 개편한 프로젝트입니다. 조회 속도와 조회 기간을 개선하고, 향후 UTM·퍼널·사용자 행동 분석으로 확장 가능한 데이터 분석 기반을 설계했습니다.";
+    "쇼핑몰 운영자가 방문, 주문, 회원, 유입, 체류시간 등 방문자 데이터를 더 빠르고 넓은 기간으로 확인할 수 있도록 기존 통계 메뉴를 데이터레이크 기반 애널리틱스로 개편한 프로젝트입니다. 조회 속도와 조회 기간을 개선하고, 향후 UTM·퍼널·사용자 행동 분석으로 확장 가능한 데이터 분석 서비스를 설계했습니다.";
   const crmPreviewVideo = existsSync(join(process.cwd(), "public", "images", "crm-group-preview.mp4"))
     ? assetPath("/images/crm-group-preview.mp4")
     : existsSync(join(process.cwd(), "public", "images", "crm-group-preview.mp4.mp4"))
@@ -82,9 +82,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     ? assetPath("/images/analytics-flow.png")
     : "";
   const analyticsPerformanceImage = existsSync(
-    join(process.cwd(), "public", "images", "analytics-performance-growth.png"),
+    join(process.cwd(), "public", "images", "analytics-quantitative-results.png"),
   )
-    ? assetPath("/images/analytics-performance-growth.png")
+    ? assetPath("/images/analytics-quantitative-results.png")
     : "";
   const asIsItems = [
     {
@@ -175,22 +175,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   ];
   const analyticsSteps = [
     {
-      label: "01",
-      title: "핵심 지표 확인",
+      label: "Point 1",
+      title: "종합 대시보드",
       description:
-        "운영자가 방문자 수, 방문횟수, 페이지뷰, 주문건수, 주문금액 등 쇼핑몰 운영 지표를 빠르게 확인할 수 있도록 설계했습니다.",
+        "주문, 방문, 인기 상품 등 핵심 지표를 한 화면에서 제공해 쇼핑몰 운영 현황과 주요 변화를 빠르게 파악할 수 있습니다.",
     },
     {
-      label: "02",
-      title: "유입과 페이지 흐름 분석",
+      label: "Point 2",
+      title: "방문 데이터 세분화",
       description:
-        "방문 출처, 랜딩페이지, 페이지별 PV, 최근 방문자 로그를 통해 고객이 어디서 들어오고 어떤 페이지를 보는지 확인할 수 있도록 구성했습니다.",
+        "페이지 방문 데이터를 기반으로 인기 상품, 인기 카테고리, 인기 게시글을 세분화해 고객 관심도와 콘텐츠 성과를 확인할 수 있습니다.",
     },
     {
-      label: "03",
-      title: "운영 의사결정에 활용",
+      label: "Point 3",
+      title: "유입·디바이스 분석",
       description:
-        "조회 속도와 조회 기간을 개선해 운영자가 장기 추세와 주요 지표 변화를 확인하고, 쇼핑몰 운영 전략을 점검할 수 있는 기반을 마련했습니다.",
+        "방문자의 디바이스와 유입 경로를 확인해 검색엔진, SNS 등 채널별 마케팅 전략 수립에 활용할 수 있습니다.",
     },
   ];
   const analyticsAsIsItems = [
@@ -214,7 +214,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     },
     {
       title: "조회 기간 12개월 확대",
-      description: "3개월 제한을 12개월로 확대해 장기 추세와 월별 변화를 확인 가능",
+      description: "조회 기간을 12개월로 확대해 장기 추세와 월별 변화 확인 가능",
     },
     {
       title: "분석 확장 기반 마련",
@@ -320,26 +320,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </>
             ) : isAnalytics ? (
               <>
-                <Info label="Timeline">
+                <Info label="PERIOD">
                   <div className="space-y-2">
                     <p>2025.03 ~ 2025.09</p>
-                    <p className="font-medium text-[#6B7280]">Official Launch · 2025.09</p>
+                    <p className="font-medium text-[#6B7280]">서비스 정식 오픈 2025.09</p>
                   </div>
                 </Info>
                 <Info label="Role">
                   <div className="space-y-2">
                     <p>PM / Policy / UX / QA</p>
                     <p className={`font-medium text-[#6B7280] ${textFlow}`}>
-                      지표 정의, 화면 기획, 데이터 정합성 검토, QA, 오픈 후 운영 대응까지 담당
+                      서비스 정책 설계, 화면 기획, 데이터 정합성 검토, QA
                     </p>
                   </div>
                 </Info>
                 <Info label="Guide">
                   <div>
                     <p>고도몰 애널리틱스 가이드</p>
-                    {/* TODO: Replace with the confirmed analytics guide URL. */}
                     <a
-                      href="#"
+                      href="https://support-help.nhn-commerce.com/common/analytics"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="mt-4 inline-flex rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
                     >
                       서비스 가이드 바로가기 →
@@ -533,12 +534,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <section className="border-b border-[#E5E1D8] bg-[#F8F7F2] py-12 md:py-16">
             <div className="container">
               <div className="mb-7 max-w-3xl">
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">User Flow</p>
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Key Features</p>
                 <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
-                  운영자가 핵심 데이터를 빠르게 확인하는 분석 흐름
+                  쇼핑몰 운영 의사결정을 돕는 핵심 분석 기능
                 </h2>
                 <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
-                  기존 통계는 메뉴별로 데이터를 확인해야 하고 조회 속도와 기간에 제약이 있었습니다. 애널리틱스에서는 운영자가 방문, 주문, 회원, 유입, 페이지 지표를 한 흐름에서 확인하고, 쇼핑몰 운영 의사결정에 활용할 수 있도록 데이터 확인 경험을 재구성했습니다.
+                  애널리틱스는 주문, 방문, 상품, 유입 데이터를 수집하고, 방문자의 행동과 유입 경로를 세분화 가공하여 쇼핑몰 운영과 마케팅 판단에 활용할 수 있도록 설계했습니다.
                 </p>
               </div>
 
@@ -575,9 +576,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   ) : (
                     <div className="flex min-h-[320px] items-center justify-center px-5 py-12 text-center">
                       <div>
-                        <p className="text-2xl font-bold text-[#111827]">고도몰 애널리틱스 사용자 흐름</p>
+                        <p className="text-2xl font-bold text-[#111827]">고도몰 애널리틱스 주요 화면</p>
                         <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
-                          방문·주문·회원·유입·페이지 데이터를 확인하는 애널리틱스 화면 흐름입니다.
+                          종합 대시보드, 방문 데이터 세분화, 유입·디바이스 분석 화면이 들어갈 영역입니다.
                         </p>
                       </div>
                     </div>
@@ -587,16 +588,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
               <div className="mt-6">
                 <div className="grid gap-3 md:grid-cols-3">
-                  {analyticsSteps.map((step, index) => (
+                  {analyticsSteps.map((step) => (
                     <div
                       key={step.label}
                       className="relative rounded-lg border border-[#E5E1D8] bg-white px-4 py-4 text-sm leading-6 text-[#111827]"
                     >
-                      {index < 2 ? (
-                        <span className="absolute right-[-18px] top-1/2 z-10 hidden -translate-y-1/2 text-lg font-bold text-[#00B894]/45 md:block">
-                          →
-                        </span>
-                      ) : null}
                       <p className="text-xs font-bold tracking-[0.14em] text-[#00B894]">{step.label}</p>
                       <p className="mt-2 font-bold text-[#111827]">{step.title}</p>
                       <p className={`mt-1 text-sm font-medium text-[#6B7280] ${textFlow}`}>{step.description}</p>
@@ -796,10 +792,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
                   <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
-                    빠른 조회와 긴 조회 기간으로 데이터 확인 경험 개선
+                    통계 조회에서 데이터 기반 운영 분석으로 확장
                   </h2>
                   <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
-                    운영자가 기다려서 확인하던 통계를 더 빠르고 넓은 기간으로 확인할 수 있도록 개선하고, 향후 고도화 분석 기능을 추가할 수 있는 기반을 마련했습니다.
+                    조회 속도와 조회 기간을 개선하는 데 그치지 않고, 방문·주문·상품·유입 데이터를 통합적으로 확인할 수 있는 애널리틱스 구조를 설계했습니다. 운영자는 고객 행동을 분석해 쇼핑몰 운영과 마케팅 전략을 데이터 기반으로 판단할 수 있습니다.
                   </p>
                 </div>
 
@@ -811,7 +807,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       {analyticsPerformanceImage ? (
                         <img
                           src={analyticsPerformanceImage}
-                          alt="애널리틱스 정량 성과 그래프"
+                          alt="애널리틱스 사용 상점 수와 메뉴 클릭 수 증가 그래프"
                           className="block h-auto w-full max-w-full rounded-[20px] object-contain"
                         />
                       ) : (
@@ -827,7 +823,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </figure>
 
                     <p className={`mt-6 text-sm font-medium text-[#6B7280] ${textFlow}`}>
-                      기존 통계 대비 조회 속도를 약 10~30초에서 5초 내외로 개선하고, 조회 가능 기간을 3개월에서 12개월로 확대했습니다. 워크데이 기준 조회 상점 수는 약 500개에서 약 700개로 증가했습니다.
+                      전년 동기 영업일 평균 기준, 애널리틱스 사용 상점 수는 기존 통계 메뉴 2,406개에서 애널리틱스 메뉴 3,568개로 약 42.4% 증가했습니다. 메뉴 클릭 수 역시 8,808회에서 11,574회로 약 31.4% 증가하며 운영자의 데이터 확인 사용량이 확대되었습니다.
                     </p>
                   </article>
 
