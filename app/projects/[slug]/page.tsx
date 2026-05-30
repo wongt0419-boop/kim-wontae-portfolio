@@ -75,8 +75,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   )
     ? assetPath("/images/integrated-message-crm-store-growth.png")
     : "";
-  const analyticsFlowVideo = existsSync(join(process.cwd(), "public", "videos", "analytics-flow.mp4"))
-    ? assetPath("/videos/analytics-flow.mp4")
+  const analyticsFlowVideo = existsSync(join(process.cwd(), "public", "images", "analytics-flow.mp4"))
+    ? assetPath("/images/analytics-flow.mp4")
     : "";
   const analyticsFlowImage = existsSync(join(process.cwd(), "public", "images", "analytics-flow.png"))
     ? assetPath("/images/analytics-flow.png")
@@ -557,30 +557,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <video
                       src={analyticsFlowVideo}
                       className="block h-auto w-full rounded-[20px] object-contain"
-                      aria-label="고도몰 애널리틱스 사용자 흐름 영상"
+                      aria-label="고도몰 애널리틱스 주요 기능 영상"
                       autoPlay
                       loop
                       muted
-                      playsInline
+                      playsInline={false}
                       preload="metadata"
                       poster={analyticsFlowImage || undefined}
                     >
-                      고도몰 애널리틱스 사용자 흐름 영상
+                      고도몰 애널리틱스 주요 기능 영상
                     </video>
                   ) : analyticsFlowImage ? (
                     <img
                       src={analyticsFlowImage}
-                      alt="고도몰 애널리틱스 사용자 흐름"
+                      alt="고도몰 애널리틱스 주요 기능 영상"
                       className="block h-auto w-full rounded-[20px] object-contain"
                     />
                   ) : (
                     <div className="flex min-h-[320px] items-center justify-center px-5 py-12 text-center">
-                      <div>
-                        <p className="text-2xl font-bold text-[#111827]">고도몰 애널리틱스 주요 화면</p>
-                        <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
-                          종합 대시보드, 방문 데이터 세분화, 유입·디바이스 분석 화면이 들어갈 영역입니다.
-                        </p>
-                      </div>
+                      <p className={`text-sm font-bold text-[#6B7280] ${textFlow}`}>
+                        애널리틱스 주요 기능 영상을 불러올 수 없습니다.
+                      </p>
                     </div>
                   )}
                 </div>
@@ -768,7 +765,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">PROJECT GOAL</p>
                   <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
-                    DB 직접 조회 기반 통계에서 데이터레이크 기반 애널리틱스로
+                    DB 직접 조회에서 데이터레이크 기반 애널리틱스로
                   </h2>
                   <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
                     기존 통계는 운영 DB를 직접 조회해 정확성은 있었지만, 조회 속도와 조회 기간, 분석 확장성에 한계가 있었습니다. 애널리틱스 개편에서는 웹로그 데이터를 별도 저장 구조로 전환하고, 운영자가 더 빠르고 넓은 기간의 데이터를 확인할 수 있도록 설계했습니다.
