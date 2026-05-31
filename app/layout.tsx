@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "김원태 | PM · Service Planner",
-  description: "IT/커머스 플랫폼 기획자 김원태 포트폴리오",
+  title: "포트폴리오 | 김원태",
+  description: "PM · Service Planner Portfolio",
 };
 
 export default function RootLayout({
