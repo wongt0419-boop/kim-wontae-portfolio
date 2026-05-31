@@ -16,8 +16,14 @@ export function Section({ id, eyebrow, title, description, children }: SectionPr
           {eyebrow ? (
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">{eyebrow}</p>
           ) : null}
-          <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">{title}</h2>
-          {description ? <p className="mt-4 text-base leading-7 text-[#6B7280]">{description}</p> : null}
+          <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] [overflow-wrap:break-word] [word-break:keep-all] md:text-4xl md:leading-[1.26]">
+            {title}
+          </h2>
+          {description ? (
+            <p className="mt-4 text-base leading-7 text-[#6B7280] [overflow-wrap:break-word] [word-break:keep-all]">
+              {description}
+            </p>
+          ) : null}
         </div>
         {children}
       </div>

@@ -53,6 +53,37 @@ a {
   border-color: rgba(0, 184, 148, 0.38);
 }
 
+.outline-button {
+  border-color: #111827;
+  color: #111827;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.outline-button:hover {
+  background: #111827;
+  border-color: #111827;
+  color: #ffffff;
+}
+
+.outline-button:hover svg {
+  color: #ffffff;
+  stroke: #ffffff;
+}
+
+.outline-button:focus-visible {
+  outline: 3px solid rgba(0, 184, 148, 0.42);
+  outline-offset: 3px;
+}
+
+.project-nav-active {
+  color: #00b894;
+  font-weight: 700;
+}
+
 .soft-grid {
   background-image:
     linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),

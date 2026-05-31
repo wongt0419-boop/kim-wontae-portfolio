@@ -14,6 +14,25 @@ export function generateStaticParams() {
   return Object.keys(projectDetails).map((slug) => ({ slug }));
 }
 
+function ExternalLinkIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-3.5 w-3.5 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 3h6v6" />
+      <path d="M10 14 21 3" />
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </svg>
+  );
+}
+
 export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = projectDetails[slug as ProjectSlug];
@@ -232,23 +251,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <>
-      <Header />
+      <Header activeProjectSlug={slug} />
       <main>
-        <section className="border-b border-[#E5E1D8] bg-[#FFFEFA] py-16 md:py-24">
+        <section className="border-b border-[#E5E1D8] bg-[#FFFEFA] pb-12 pt-[72px] md:pb-16 md:pt-24">
           <div className="container">
-            <Link href="/" className="text-sm font-bold text-[#00B894]">
-              ← Back to Home
-            </Link>
-            <p className="mt-10 text-sm font-bold text-[#FF8A3D]">{eyebrow}</p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight tracking-[0] text-[#111827] md:text-6xl">
+            <p className="text-sm font-bold text-[#FF8A3D]">{eyebrow}</p>
+            <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.2] tracking-[0] text-[#111827] [overflow-wrap:break-word] [word-break:keep-all] md:text-6xl md:leading-[1.16]">
               {project.title}
             </h1>
             {isIntegratedMessage ? (
-              <p className={`mt-5 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{integratedDescription}</p>
+              <p className={`mt-8 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{integratedDescription}</p>
             ) : isAnalytics ? (
-              <p className={`mt-5 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{analyticsDescription}</p>
+              <p className={`mt-8 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{analyticsDescription}</p>
             ) : (
-              <p className={`mt-5 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{project.subtitle}</p>
+              <p className={`mt-8 max-w-3xl text-lg text-[#6B7280] ${textFlow}`}>{project.subtitle}</p>
             )}
           </div>
         </section>
@@ -280,10 +296,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <a
                       href="https://manual.godomall.com/data/manual_view.php?category=crm__crm___crm_group"
                       target="_blank"
-                      rel="noreferrer"
-                      className="mt-4 inline-flex rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
                     >
-                      서비스 가이드 바로가기 →
+                      서비스 가이드 바로가기
+                      <ExternalLinkIcon />
                     </a>
                   </div>
                 </Info>
@@ -311,9 +328,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       href="https://www.godo.co.kr/main/blog/25/%EC%87%BC%ED%95%91%EB%AA%B0-%ED%9A%8C%EC%9B%90-%EC%A0%95%EB%B3%B4%EB%A1%9C-%EA%B3%A0%EA%B0%9D-%EC%84%B8%EA%B7%B8%EB%A8%BC%ED%8A%B8-%EC%89%BD%EA%B2%8C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B0%A9%EB%B2%95-1257"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
+                      className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
                     >
                       활용 콘텐츠 바로가기
+                      <ExternalLinkIcon />
                     </a>
                   </div>
                 </Info>
@@ -341,9 +359,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       href="https://support-help.nhn-commerce.com/common/analytics"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
+                      className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#00B894] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#009f80]"
                     >
-                      서비스 가이드 바로가기 →
+                      서비스 가이드 바로가기
+                      <ExternalLinkIcon />
                     </a>
                   </div>
                 </Info>
@@ -363,7 +382,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="container">
               <div className="mb-7 max-w-3xl">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">User Flow</p>
-                <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
                   CRM 설정의 진입 장벽을 낮춘 사용자 흐름
                 </h2>
                 <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
@@ -452,8 +471,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="container">
               <div className="mb-7 max-w-3xl">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">User Flow</p>
-                <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
-                  CRM 그룹에서 메시지 발송, 성과 확인까지 이어지는 흐름
+                <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
+                  CRM 그룹 생성부터 메시지 발송, 성과 확인까지
                 </h2>
                 <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
                   CRM 그룹을 수신 대상으로 선택하고, 채널별 메시지 작성과 발송 설정을 거쳐 성과 확인까지 이어지는 흐름을 설계했습니다. 운영자는 타겟 고객군을 다시 설정하지 않아도 CRM 그룹을 기반으로 반복 발송, 대체 메시지, 숏링크 성과 추적을 활용할 수 있습니다.
@@ -497,7 +516,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   ) : (
                     <div className="flex min-h-[320px] items-center justify-center px-5 py-12 text-center">
                       <div>
-                        <p className="text-2xl font-bold text-[#111827]">통합 메시지 발송 흐름</p>
+                        <p className="text-2xl font-bold leading-[1.32] text-[#111827]">통합 메시지 발송 흐름</p>
                         <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
                           CRM 그룹 선택 → 메시지 작성 → 반복/대체 메시지 설정 → 성과 확인
                         </p>
@@ -535,7 +554,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="container">
               <div className="mb-7 max-w-3xl">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Key Features</p>
-                <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
                   쇼핑몰 운영 의사결정을 돕는 핵심 분석 기능
                 </h2>
                 <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
@@ -607,7 +626,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="container">
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">PROJECT GOAL</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                  <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
                     일회성 타겟 추출에서 저장형 CRM 그룹으로
                   </h2>
                   <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
@@ -632,7 +651,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="container">
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                  <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
                     고객 맞춤 메시지 기반 구매 전환 유도
                   </h2>
                 </div>
@@ -686,8 +705,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="container">
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">PROJECT GOAL</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
-                    분산된 메시지 발송에서 CRM 기반 통합 메시지 운영으로
+                  <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
+                    분산된 메시지 채널을 CRM 기반 통합 발송으로
                   </h2>
                   <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
                     기존에는 메시지 채널별로 메뉴와 정책이 분리되어 있었고, 발송 이후에는 이력 확인 중심으로만 관리되었습니다. 통합 메시지 개편에서는 모바일 메시지 발송부를 중심으로 채널, 대상, 반복 발송, 대체 메시지, 성과 추적을 하나의 운영 흐름으로 연결했습니다.
@@ -710,8 +729,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="container">
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
-                    CRM 메시지부터 성과 분석, 리타겟팅까지 이어지는 마케팅 전환 루프 기반 마련
+                  <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
+                    CRM 메시지부터 성과 분석, 리타겟팅까지 <br /> 이어지는 마케팅 전환 루프 기반 마련
                   </h2>
                 </div>
 
@@ -764,7 +783,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="container">
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">PROJECT GOAL</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                  <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
                     DB 직접 조회에서 데이터레이크 기반 애널리틱스로
                   </h2>
                   <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
@@ -788,7 +807,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="container">
                 <div className="mb-8 max-w-3xl">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#00B894]">Results</p>
-                  <h2 className="text-2xl font-bold tracking-[0] text-[#111827] md:text-4xl">
+                  <h2 className="text-2xl font-bold leading-[1.32] tracking-[0] text-[#111827] md:text-4xl md:leading-[1.26]">
                     통계 조회에서 데이터 기반 운영 분석으로 확장
                   </h2>
                   <p className={`mt-4 text-base text-[#6B7280] ${textFlow}`}>
@@ -854,7 +873,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 >
                   <div>
                     <p className="text-sm font-bold text-[#00B894]">{String(index + 1).padStart(2, "0")}</p>
-                    <h2 className="mt-2 text-xl font-bold text-[#111827]">{title}</h2>
+                    <h2 className="mt-2 text-xl font-bold leading-[1.35] text-[#111827]">{title}</h2>
                   </div>
                   <p className="text-base leading-8 text-[#4B5563]">{body}</p>
                 </article>
