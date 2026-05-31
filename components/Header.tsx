@@ -74,11 +74,11 @@ export function Header() {
                 <Link href="/" className="text-[15px] font-bold tracking-[0] text-[#111827] lg:text-2xl">
                   김원태
                 </Link>
-                <p className="mt-1 hidden text-sm leading-6 text-[#6B7280] lg:block">Commerce Platform Planner</p>
+                <p className="mt-1 hidden text-sm leading-6 text-[#6B7280] lg:block">IT Service Planner</p>
               </div>
             </div>
             <p className="mt-6 hidden border-l-2 border-[#00B894] pl-4 text-sm leading-7 text-[#4B5563] lg:block">
-              CRM / Message / Analytics / API Integration
+              CMS / CRM / E-Commerce / Analytics / API Integration
             </p>
           </div>
 
@@ -142,7 +142,7 @@ export function Header() {
                 />
                 <div>
                   <p className="text-sm font-bold text-[#111827]">김원태</p>
-                  <p className="mt-1 text-xs text-[#6B7280]">Commerce Platform Planner</p>
+                  <p className="mt-1 text-xs text-[#6B7280]">IT Service Planner</p>
                 </div>
               </div>
               <label
@@ -185,7 +185,7 @@ export function Footer() {
       <div className="container flex flex-col justify-between gap-2 text-sm text-[#6B7280] sm:flex-row">
         <p>© 2026 Kim Wontae</p>
         <div className="flex flex-col gap-2 sm:items-end">
-          <p>Commerce Platform Planner</p>
+          <p>IT Service Planner</p>
           <a href="mailto:wongt93@naver.com" className="hover:text-[#111827]">
             wongt93@naver.com
           </a>

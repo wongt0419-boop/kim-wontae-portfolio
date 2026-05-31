@@ -4,10 +4,10 @@ export const siteNav = [
 ];
 
 export const metrics = [
-  { value: "5년+", label: "커머스·서비스 기획 경력" },
-  { value: "6.7x", label: "CRM 그룹 사용 상점 성장" },
-  { value: "40%", label: "애널리틱스 조회 상점 증가" },
-  { value: "6+", label: "제휴사 API/웹훅 연동 대응" },
+  { value: "5년+", label: "이커머스·서비스 기획 경력" },
+  { value: "18건", label: "프로젝트 매니징 건수" },
+  { value: "26건", label: "완료 프로젝트 수" },
+  { value: "3번", label: "회사 근무 경험 수" },
 ];
 
 export const keywords = [
@@ -52,29 +52,26 @@ export const competencies = [
 export const selectedProjects = [
   {
     slug: "crm-group",
-    title: "CRM 그룹",
-    subtitle: "회원 행동 조건 기반 타겟 그룹 생성 기능",
-    summary:
-      "일회성 수신 대상 추출을 저장·재사용 가능한 CRM 그룹 구조로 전환했습니다.",
-    impact: ["출시월 30개 → 2026.04 기준 약 200개 상점 사용", "약 6.7배 증가"],
+    title: "CRM 그룹 관리",
+    subtitle: "고객 행동 데이터 기반 CRM 타겟 그룹 생성 기능",
+    summary: "추천 타겟과 조건 조합으로 CRM 그룹을 생성하고 메시지 발송까지 연결",
+    impact: ["사용 상점 수 11개 → 563개, 약 51.2배 증가"],
     href: "/projects/crm-group",
   },
   {
     slug: "integrated-message",
     title: "통합 메시지 개편",
     subtitle: "CRM 그룹 기반 모바일 메시지 통합 발송 구조",
-    summary:
-      "SMS/LMS, 친구톡, 알림톡, 앱푸시 발송 구조를 통합하고 반복 발송·대체 메시지·성과 추적 기능을 설계했습니다.",
-    impact: ["타겟팅 → 발송 → 성과 분석 → 리타겟팅 CRM 마케팅 루프 기반 마련"],
+    summary: "분산된 메시지 채널을 하나의 발송 흐름으로 통합하고 CRM 그룹 기반 타겟 발송을 확장",
+    impact: ["CRM 그룹 대상 발송 상점 수 56개 → 76개, 약 35.7% 증가"],
     href: "/projects/integrated-message",
   },
   {
     slug: "analytics",
     title: "고도몰 애널리틱스",
-    subtitle: "데이터레이크 기반 통계/분석 기능 개편",
-    summary:
-      "기존 DB 조회 기반 통계를 데이터레이크 기반 애널리틱스 구조로 전환했습니다.",
-    impact: ["조회 속도 10~30초 → 5초 내외", "조회 기간 3개월 → 12개월", "조회 상점 수 약 40% 증가"],
+    subtitle: "데이터 기반 운영 분석을 위한 애널리틱스 개편",
+    summary: "기존 통계 메뉴를 애널리틱스 구조로 전환해 고객 행동과 운영 데이터를 더 쉽게 확인하도록 개선",
+    impact: ["사용 상점 수 약 42.4% 증가, 메뉴 클릭 수 약 31.4% 증가"],
     href: "/projects/analytics",
   },
 ];

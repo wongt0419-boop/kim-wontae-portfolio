@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "김원태 | Commerce Platform Planner",
+  title: "김원태 | IT Service Planner",
   description: "IT/커머스 플랫폼 기획자 김원태 포트폴리오",
 };
 
