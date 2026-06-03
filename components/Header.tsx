@@ -180,7 +180,7 @@ export function Header({ activeProjectSlug }: { activeProjectSlug?: string } = {
               </div>
             ))}
             <a
-              href={assetPath("/files/resume.pdf")}
+              href={assetPath("/files/resume_v2.pdf")}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-between text-[#111827] hover:text-[#00B894]"
@@ -299,7 +299,7 @@ export function Header({ activeProjectSlug }: { activeProjectSlug?: string } = {
                 </div>
               ))}
               <a
-                href={assetPath("/files/resume.pdf")}
+                href={assetPath("/files/resume_v2.pdf")}
                 onClick={closeMenu}
                 target="_blank"
                 rel="noopener noreferrer"

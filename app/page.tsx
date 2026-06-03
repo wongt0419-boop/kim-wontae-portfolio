@@ -50,7 +50,7 @@ export default function Home() {
                   프로젝트 보기
                 </Link>
                 <a
-                  href={assetPath("/files/resume.pdf")}
+                  href={assetPath("/files/resume_v2.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="outline-button inline-flex items-center justify-center gap-1.5 rounded-full border px-6 py-3 text-sm font-bold"
